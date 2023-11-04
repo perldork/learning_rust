@@ -10,6 +10,7 @@ struct User {
 fn main() {
     structs_exercises_1();
     structs_exercises_2();
+    // structs_exercises_3_this_will_not_compile();
 }
 
 #[derive(Debug)]
@@ -20,6 +21,24 @@ struct Point(i32, i32, i32);
 
 #[derive(Debug)]
 struct AlwaysBlue;
+
+// This will not compile because no lifetimes specified
+// for the string slices
+// fn structs_exercises_3_this_will_not_compile() {
+//     struct InvalidUser {
+//         active: bool,
+//         username: &str,
+//         email: &str,
+//         sign_in_count: u64,
+//     }
+// 
+//     let user = InvalidUser {
+//         active: true,
+//         username: "notgonnaworkhere",
+//         email: "notgonnaworkhere@example.com",
+//         sign_in_count: 1,
+//     }
+// }
 
 fn structs_exercises_2() {
 
