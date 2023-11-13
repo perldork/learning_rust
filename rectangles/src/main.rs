@@ -14,6 +14,12 @@ impl Rectangle {
     fn height(&self) -> u32 {
         self.height
     }
+    fn has_area(&self) -> bool {
+        self.area() > 0
+    }
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
 }
 
 fn main() {
@@ -22,7 +28,33 @@ fn main() {
     calculate_area_with_tuple();
     calculate_area_with_structs();
     calculate_area_with_methods();
+    can_one_rect_hold_another();
 }
+
+fn can_one_rect_hold_another() {
+
+    println!("Can one Rectangle contain another Rectangle inside of itself?");
+
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+
+    let rect2 = Rectangle {
+        width: 10,
+        height: 40,
+    };
+
+    let rect3 = Rectangle {
+        width: 60,
+        height: 45,
+    };
+
+    println!("\tCan rect1 {:?} hold rect2 {:?}? {}", rect1, rect2, rect1.can_hold(&rect2));
+    println!("\tCan rect1 {:?} hold rect3 {:?}? {}", rect1, rect3, rect1.can_hold(&rect3));
+
+}
+
 
 fn calculate_area_with_methods() {
     println!("Calculate area 4: with methods");
@@ -43,6 +75,13 @@ fn calculate_area_with_methods() {
     );
 
     dbg!(&rect);
+
+    if rect.has_area() {
+        println!("\tThe rectange has a non-zero area of {}", rect.area());
+    } else {
+        println!("\tThe rectange has a zero area");
+    }
+
 }
 
 fn calculate_area_with_structs() {
