@@ -20,6 +20,9 @@ impl Rectangle {
     fn can_hold(&self, other: &Rectangle) -> bool {
         self.width > other.width && self.height > other.height
     }
+    fn square(size: u32) -> Self {
+        Self {width: size, height: size}
+    }
 }
 
 fn main() {
@@ -29,6 +32,15 @@ fn main() {
     calculate_area_with_structs();
     calculate_area_with_methods();
     can_one_rect_hold_another();
+    factory_methods();
+}
+
+fn factory_methods() {
+    println!("Factory methods");
+
+    let square = dbg!(Rectangle::square(10));
+
+    println!("\tSquare (equilateral rectangle): {:?}", square);
 }
 
 fn can_one_rect_hold_another() {
